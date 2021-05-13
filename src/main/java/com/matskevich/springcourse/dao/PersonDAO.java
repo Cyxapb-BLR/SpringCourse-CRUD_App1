@@ -42,4 +42,26 @@ public class PersonDAO {
         person.setId(++PEOPLE_COUNT);
         people.add(person);
     }
+
+    public void update(int id, Person updatedPerson) {
+        Person personToBeUpdated = show(id);
+        personToBeUpdated.setName(updatedPerson.getName());
+    }
+
+    public void delete(int id) {
+        //работают все три способа:
+        people.remove(show(id));                          //1
+        /*for (Person person : people) {
+            if (person.getId() == id) {                     //2
+                people.remove(person);
+                break;
+            }
+        }*/
+        /*for (int i = 0; i < people.size(); i++) {
+            if (people.get(i).getId() == id) {              //3
+                people.remove(i);
+                i--;
+            }
+        }*/
+    }
 }
